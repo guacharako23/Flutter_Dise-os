@@ -1,14 +1,16 @@
-# Flutter_Dise-os
-Flutter Diseños
+# flutter_application_1
 
-Instrucciones
-Realizar los siguientes diseños en flutter: 
+A new Flutter project.
 
-Diseños: para este diseño puede usar ListView, para hacer scroll horizontal sobre los tópicos populares, y scroll  vertical para las tendencias. Tenga en cuenta que si hace uso de ListView deberá colocarle como hijos contenedores que representaran las tarjetas.  
+## Getting Started
 
-Les anexo recursos de imágenes   
+This project is a starting point for a Flutter application.
 
-NOTA: deberá entregar código fuente y capturas de pantalla del resultado
+A few resources to get you started if this is your first Flutter project:
 
-![image](https://github.com/guacharako23/Flutter_Dise-os/assets/87039930/f1a13580-2d31-4b10-bf79-65b8127600a6)
+- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
+For help getting started with Flutter development, view the
+[online documentation](https://docs.flutter.dev/), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.
