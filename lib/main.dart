@@ -4,60 +4,82 @@ void main() {
   runApp(MyApp());
 }
 
+class Food {
+  final String name;
+  final String imagePath;
+
+  const Food({required this.name, required this.imagePath});
+}
+
 class MyApp extends StatelessWidget {
+  MyApp({super.key});
+
+  final List<Food> foods = [
+    const Food(name: 'Hamburguesa', imagePath: 'lib/img/burger.png'),
+    const Food(name: 'Ensalada', imagePath: 'lib/img/ensalada.png'),
+    const Food(name: 'Fast Food', imagePath: 'lib/img/fastfood.png'),
+    const Food(name: 'Hot Dog', imagePath: 'lib/img/hotdog.png'),
+    const Food(name: 'Jugo', imagePath: 'lib/img/jugo.png'),
+    const Food(name: 'Papas', imagePath: 'lib/img/papas.png'),
+    const Food(name: 'Pizzas', imagePath: 'lib/img/pizza.png'),
+    const Food(name: 'Tortas', imagePath: 'lib/img/torta.png'),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Diseños en Flutter'),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+      home: Scaffold(
+        body: Stack(
           children: [
-            Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Text(
-                'Tópicos Populares',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            Positioned(
+              top: -MediaQuery.of(context).size.height * 0.2,
+              left: 0,
+              right: 0,
+              child: Container(
+                width: double.infinity,
+                height: MediaQuery.of(context).size.height * 0.5,
+                decoration: const BoxDecoration(
+                  color: Colors.green,
+                ),
               ),
             ),
-            Container(
-              height: 150,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
+            SafeArea(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  CardItem('Tópico 1'),
-                  CardItem('Tópico 2'),
-                  CardItem('Tópico 3'),
-                  // Agrega más tarjetas aquí
-                ],
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Text(
-                'Tendencias',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-              ),
-            ),
-            Container(
-              height: 400,
-              child: ListView(
-                children: [
-                  CardItem('Tendencia 1'),
-                  CardItem('Tendencia 2'),
-                  CardItem('Tendencia 3'),
-                  // Agrega más tarjetas aquí
+                  const Text(
+                    '¿Tienes Filo?',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 26,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  Image.asset('lib/assets/avatar.png'),
+                  const SizedBox(height: 10),
+                  Image.asset('lib/assets/fondo.png'),
+                  const SizedBox(height: 20),
+                  SizedBox(
+                    height: 200.0,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: foods.length,
+                      itemBuilder: (context, index) {
+                        return Card(
+                          child: SizedBox(
+                            width: 150.0,
+                            child: Column(
+                              children: [
+                                Image.asset(foods[index].imagePath),
+                                Text(foods[index].name),
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -67,28 +89,3 @@ class MyHomePage extends StatelessWidget {
     );
   }
 }
-
-class CardItem extends StatelessWidget {
-  final String title;
-
-  CardItem(this.title);
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.all(10.0),
-      child: Container(
-        width: 150,
-        height: 150,
-        child: Center(
-          child: Text(
-            title,
-            style: TextStyle(fontSize: 18),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-
